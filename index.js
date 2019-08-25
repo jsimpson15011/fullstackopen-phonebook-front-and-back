@@ -2,15 +2,12 @@ require('dotenv').config()
 const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
-const morgan = require('morgan')
 const Person = require('./models/person')
 const cors = require('cors')
 app.use(express.static('build'))
 app.use(cors())
 app.use(bodyParser.json())
 
-morgan.token('body', (req)=>{return JSON.stringify(req.body) })
-app.use(morgan(':method :url :status :res[content-length] - :response-time ms :body'))
 
 app.get('/api/persons', (req,res) => {
     Person.find({}).then(people => {
