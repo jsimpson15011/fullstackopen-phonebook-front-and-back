@@ -1,0 +1,4 @@
+.env
+mongo.js
+.idea
+**/node_modules
